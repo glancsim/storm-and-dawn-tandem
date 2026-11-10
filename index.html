@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Tandem Read</title>
+  <meta name="description" content="Tandem read tracker for Empire of Storms and Tower of Dawn. An unofficial fan project.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <!-- The silhouette scene is defined once here and reused with <use href="#scene-art">
+       on the intro, in the banner and on the finale. Paths and colors come from assets/mockup.html. -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <g id="scene-art">
+        <g transform="translate(0,200) scale(1.45) translate(0,-200)">
+          <path d="M0,200 L0,130 C10,100 50,90 85,105 C70,108 60,118 62,132 C80,124 100,128 108,142 C85,140 70,150 74,166 C50,160 25,165 0,178 Z" fill="#0e3a4a"/>
+          <path d="M0,152 C20,130 55,122 78,130 C66,134 60,142 62,152 C50,148 30,152 0,164 Z" fill="#145066"/>
+          <path d="M0,130 C10,100 50,90 85,105" stroke="#7fd0d8" stroke-width="3" fill="none"/>
+          <circle cx="54" cy="84" r="1.1" fill="#cdeff2"/>
+          <circle cx="60" cy="86" r="1.5" fill="#cdeff2"/>
+          <circle cx="68" cy="88" r="1.2" fill="#cdeff2"/>
+          <circle cx="76" cy="94" r="1.4" fill="#cdeff2"/>
+        </g>
+        <path d="M0,200 L0,172 C60,150 140,160 220,181 C300,193 380,189 450,193 L475,200 Z" fill="#0b2e3c"/>
+        <path d="M140,162 C170,166 200,174 220,181 C300,193 380,189 450,193" stroke="#3aa0b0" stroke-width="1" stroke-opacity="0.6" fill="none"/>
+        <path d="M110,200 L110,190 C200,183 310,192 410,195 C440,196 460,198 475,199 L475,200 Z" fill="#0e3a4a"/>
+        <g fill="#2a1838">
+          <rect x="480" y="172" width="22" height="28"/>
+          <rect x="520" y="166" width="20" height="34"/>
+          <rect x="612" y="164" width="24" height="36"/>
+          <rect x="650" y="170" width="22" height="30"/>
+        </g>
+        <g fill="#140b1c">
+          <!-- the shore continues to the right on screens wider than the scene -->
+          <rect x="440" y="190" width="4240" height="10"/>
+          <rect x="466" y="182" width="14" height="18"/>
+          <rect x="484" y="176" width="12" height="24"/>
+          <polygon points="498,200 498,172 505,152 512,172 512,200"/>
+          <rect x="516" y="180" width="16" height="20"/>
+          <rect x="560" y="52" width="36" height="148"/>
+          <rect x="560" y="44" width="6" height="8"/>
+          <rect x="570" y="44" width="6" height="8"/>
+          <rect x="580" y="44" width="6" height="8"/>
+          <rect x="590" y="44" width="6" height="8"/>
+          <rect x="540" y="160" width="9" height="40"/>
+          <rect x="607" y="160" width="9" height="40"/>
+          <rect x="538" y="154" width="80" height="7"/>
+          <rect x="622" y="172" width="14" height="28"/>
+          <polygon points="640,200 640,168 648,144 656,168 656,200"/>
+          <rect x="660" y="164" width="20" height="36"/>
+        </g>
+        <g fill="#ff9a3c">
+          <rect x="574" y="92" width="2" height="5"/>
+          <rect x="582" y="110" width="2" height="5"/>
+          <rect x="568" y="124" width="2" height="5"/>
+        </g>
+      </g>
+    </defs>
+  </svg>
+
+  <div id="intro" class="intro" role="button" tabindex="0"
+       aria-label="The storm is coming. The tower is waiting. Begin.">
+    <canvas class="intro-canvas" aria-hidden="true"></canvas>
+    <div class="intro-scene">
+      <svg class="scene" viewBox="0 0 680 200" preserveAspectRatio="xMinYMax meet" aria-hidden="true" focusable="false"><use href="#scene-art"/></svg>
+    </div>
+  </div>
+
+  <p id="storage-warning" class="storage-warning" role="status" hidden>Progress will not be saved in this browser mode.</p>
+  <main id="app" class="app"></main>
+  <noscript><p class="noscript">My Tandem Read needs JavaScript to run.</p></noscript>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
