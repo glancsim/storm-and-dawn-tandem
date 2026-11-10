@@ -37,7 +37,7 @@ Uses Node's built-in test runner (Node 20 or newer). The tests cover chapter exp
 2. In **Settings → Pages** set **Source: GitHub Actions**.
 3. Every push to `main` runs `.github/workflows/pages.yml`: it runs `node --test` first and deploys only if the tests pass.
 
-The workflow publishes only the site files (`index.html`, `styles.css`, `favicon.svg`, `chapters.json`, `js/`). All URLs are relative, so the app works under `https://<user>.github.io/<repo>/`.
+The workflow publishes only the site files (`index.html`, `styles.css`, `favicon.svg`, `manifest.webmanifest`, `icons/`, `chapters.json`, `js/`). All URLs are relative, so the app works under `https://<user>.github.io/<repo>/`.
 
 ## Structure
 
@@ -74,7 +74,7 @@ Choices made where `SPEC.md` is silent:
 - **Banner and finale height** follow the scene's aspect ratio instead of the fixed pixel heights of the mockup, so nothing is cropped at 360 px.
 - **UI colours outside the scene** (neutral surfaces, blue accent, tints) approximate the mockup, which used its host's design tokens; they are plain CSS variables in `styles.css`.
 - **Two tabs:** a change made in another tab of the app is picked up through the `storage` event.
-- **Icons** are own inline SVG drawings in `js/icons.js`; `favicon.svg` is an own drawing too.
+- **Icons** are own inline SVG drawings in `js/icons.js`; `favicon.svg` is an own drawing too. iOS does not use SVG icons, so `icons/` holds PNG copies of it (rendered once from `favicon.svg`, square corners because iOS rounds them itself) for the home screen and the web manifest.
 
 ## Česky
 
