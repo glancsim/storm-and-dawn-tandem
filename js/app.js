@@ -13,8 +13,9 @@ import * as overview from './views/overview.js';
 import * as noteEditor from './views/note-editor.js';
 import * as notes from './views/notes.js';
 import * as settings from './views/settings.js';
+import * as finale from './views/finale.js';
 
-const VIEWS = { main: overview, notes, settings, finale: overview };
+const VIEWS = { main: overview, notes, settings, finale };
 const MODULES = [overview, noteEditor, notes, settings];
 const ROUTES = { '#/': 'main', '#/notes': 'notes', '#/settings': 'settings', '#/finale': 'finale' };
 
