@@ -1,0 +1,8 @@
+{
+  "name": "storm-and-dawn-tandem",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
