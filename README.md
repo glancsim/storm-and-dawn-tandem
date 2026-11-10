@@ -77,6 +77,7 @@ Choices made where `SPEC.md` is silent:
 - **Notes with an empty page** leave the page out of the meta line ("Part 2 · 27 Oct 2026").
 - **Intro:** particles are sampled every 2 CSS px and capped at 6000 (3500 on narrow screens or devices with 4 or fewer cores) by widening the sampling step. Tab and modifier keys alone do not start it, so keyboard users are not surprised.
 - **Scene on very wide screens:** the scene is anchored to the left and the dark shore line continues to the right edge.
+- **Intro scene on phones held upright** (up to 600 px wide) is at least a quarter of the screen high instead of following the width. The wave stays pinned left and the tower pinned right, and a strip of empty sea between them is skipped, so both stay whole.
 - **Banner and finale height** follow the scene's aspect ratio instead of the fixed pixel heights of the mockup, so nothing is cropped at 360 px.
 - **UI colours outside the scene** (neutral surfaces, blue accent, tints) approximate the mockup, which used its host's design tokens; they are plain CSS variables in `styles.css`.
 - **Two tabs:** a change made in another tab of the app is picked up through the `storage` event.

@@ -42,7 +42,7 @@ export function playIntro(box) {
       const fs = Math.round(Math.min(44, Math.max(20, W / 14)));
       const lh = fs * 1.5;
       // Keep the text in the free sky above the scene (wave crest is at 84 % of its height).
-      const sceneH = Math.min((W * 200) / 680, H * 0.62);
+      const sceneH = box.querySelector('.intro-scene')?.offsetHeight || Math.min((W * 200) / 680, H * 0.62);
       const free = H - sceneH * 0.84;
       const cy = Math.max(free * 0.5, lh * 1.6);
       text = { fs, lh, y0: cy - ((QUOTE.length - 1) * lh) / 2 };
