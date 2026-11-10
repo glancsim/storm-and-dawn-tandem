@@ -135,6 +135,20 @@ a { color: inherit; }
   pointer-events: none;
 }
 .intro-scene .scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+.intro-scene .scene-tower { display: none; }
+/* Phones held upright: the scene grows to a quarter of the screen height. The wave half
+   (x 0-440 of the scene) stays pinned left and the tower half (x 440-680) pinned right; the
+   two overlap over open sea, so a strip of empty sea is skipped instead of shrinking both.
+   The height is at least 100vw / 2.2, so the two halves always meet with no gap. */
+@media (orientation: portrait) and (max-width: 600px) {
+  .intro-scene {
+    aspect-ratio: auto;
+    height: max(calc(100vw / 2.2), 25vh);
+    height: max(calc(100vw / 2.2), 25svh);
+  }
+  .intro-scene .scene { right: auto; width: auto; aspect-ratio: 680 / 200; clip-path: inset(0 35.3% 0 0); }
+  .intro-scene .scene-tower { display: block; left: auto; right: 0; aspect-ratio: 240 / 200; clip-path: none; }
+}
 
 .scene { display: block; overflow: visible; }
 

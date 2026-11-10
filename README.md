@@ -39,6 +39,12 @@ Uses Node's built-in test runner (Node 20 or newer). The tests cover chapter exp
 
 The workflow publishes only the site files (`index.html`, `styles.css`, `favicon.svg`, `manifest.webmanifest`, `icons/`, `chapters.json`, `js/`). All URLs are relative, so the app works under `https://<user>.github.io/<repo>/`.
 
+## Visit counting
+
+The app counts visits anonymously with [GoatCounter](https://www.goatcounter.com): no cookies, no third-party script, no consent banner needed. Each app load sends one image request to `https://<code>.goatcounter.com/count` with the page path, title, screen size and the referring site. Reading progress and notes are never sent.
+
+To turn it on, set `GOATCOUNTER_CODE` in `js/analytics.js` to your GoatCounter site code (the part before `.goatcounter.com`). With an empty code, on `localhost` and when opened as a file, nothing is sent. The numbers are on your GoatCounter dashboard.
+
 ## Structure
 
 | Path | Purpose |
@@ -46,7 +52,7 @@ The workflow publishes only the site files (`index.html`, `styles.css`, `favicon
 | `index.html` | Page shell; defines the SVG scene once |
 | `styles.css` | All styles and the light / dark theme variables |
 | `chapters.json` | Reading order in compact block notation |
-| `js/chapters.js`, `i18n.js`, `dates.js`, `state.js`, `storage.js` | Pure logic, no DOM, unit tested |
+| `js/chapters.js`, `i18n.js`, `dates.js`, `state.js`, `storage.js`, `analytics.js` | Pure logic, no DOM, unit tested |
 | `js/app.js` | Boot, routing, rendering, event delegation |
 | `js/intro.js` | Intro canvas animation |
 | `js/views/` | Overview, note editor, Notes, Settings, finale |
@@ -71,6 +77,7 @@ Choices made where `SPEC.md` is silent:
 - **Notes with an empty page** leave the page out of the meta line ("Part 2 · 27 Oct 2026").
 - **Intro:** particles are sampled every 2 CSS px and capped at 6000 (3500 on narrow screens or devices with 4 or fewer cores) by widening the sampling step. Tab and modifier keys alone do not start it, so keyboard users are not surprised.
 - **Scene on very wide screens:** the scene is anchored to the left and the dark shore line continues to the right edge.
+- **Intro scene on phones held upright** (up to 600 px wide) is at least a quarter of the screen high instead of following the width. The wave stays pinned left and the tower pinned right, and a strip of empty sea between them is skipped, so both stay whole.
 - **Banner and finale height** follow the scene's aspect ratio instead of the fixed pixel heights of the mockup, so nothing is cropped at 360 px.
 - **UI colours outside the scene** (neutral surfaces, blue accent, tints) approximate the mockup, which used its host's design tokens; they are plain CSS variables in `styles.css`.
 - **Two tabs:** a change made in another tab of the app is picked up through the `storage` event.
@@ -83,4 +90,5 @@ Statická aplikace pro tandemové čtení *Empire of Storms* a *Tower of Dawn*. 
 - **Spuštění:** `python3 -m http.server 8000` a otevři http://localhost:8000 (žádný build, žádné závislosti).
 - **Testy:** `node --test`.
 - **Nasazení:** pushni na GitHub a v **Settings → Pages** nastav **Source: GitHub Actions**. Workflow nejdřív spustí testy a nasadí jen při úspěchu.
+- **Počítání návštěv:** anonymně přes GoatCounter. Zapne se vyplněním `GOATCOUNTER_CODE` v `js/analytics.js`, na `localhost` se nic neposílá.
 - Rozhodnutí tam, kde zadání mlčí, jsou v sekci "Decisions" výše.

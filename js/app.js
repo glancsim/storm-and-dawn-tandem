@@ -14,6 +14,7 @@ import * as noteEditor from './views/note-editor.js';
 import * as notes from './views/notes.js';
 import * as settings from './views/settings.js';
 import * as finale from './views/finale.js';
+import { GOATCOUNTER_CODE, shouldCount, countUrl } from './analytics.js';
 
 const VIEWS = { main: overview, notes, settings, finale };
 const MODULES = [overview, noteEditor, notes, settings];
@@ -203,8 +204,27 @@ async function boot() {
   });
 
   render();
+  countVisit();
   await intro;
   appEl.inert = false;
+}
+
+/** Sends one anonymous GoatCounter hit per app load (see js/analytics.js). */
+function countVisit() {
+  try {
+    if (!shouldCount(GOATCOUNTER_CODE, location)) return;
+    const img = new Image();
+    img.src = countUrl(GOATCOUNTER_CODE, {
+      path: location.pathname,
+      title: document.title,
+      referrer: document.referrer,
+      hostname: location.hostname,
+      screen: { width: screen.width, height: screen.height, dpr: Math.round((devicePixelRatio || 1) * 100) / 100 },
+      rnd: Math.random().toString(36).slice(2, 8),
+    });
+  } catch {
+    // Counting must never break the app.
+  }
 }
 
 boot();
