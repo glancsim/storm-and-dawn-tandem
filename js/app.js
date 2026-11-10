@@ -12,9 +12,10 @@ import { banner, footer, esc } from './views/common.js';
 import * as overview from './views/overview.js';
 import * as noteEditor from './views/note-editor.js';
 import * as notes from './views/notes.js';
+import * as settings from './views/settings.js';
 
-const VIEWS = { main: overview, notes, settings: overview, finale: overview };
-const MODULES = [overview, noteEditor, notes];
+const VIEWS = { main: overview, notes, settings, finale: overview };
+const MODULES = [overview, noteEditor, notes, settings];
 const ROUTES = { '#/': 'main', '#/notes': 'notes', '#/settings': 'settings', '#/finale': 'finale' };
 
 const appEl = document.getElementById('app');
