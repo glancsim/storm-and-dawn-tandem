@@ -11,9 +11,10 @@ import { playIntro } from './intro.js';
 import { banner, footer, esc } from './views/common.js';
 import * as overview from './views/overview.js';
 import * as noteEditor from './views/note-editor.js';
+import * as notes from './views/notes.js';
 
-const VIEWS = { main: overview, notes: overview, settings: overview, finale: overview };
-const MODULES = [overview, noteEditor];
+const VIEWS = { main: overview, notes, settings: overview, finale: overview };
+const MODULES = [overview, noteEditor, notes];
 const ROUTES = { '#/': 'main', '#/notes': 'notes', '#/settings': 'settings', '#/finale': 'finale' };
 
 const appEl = document.getElementById('app');
