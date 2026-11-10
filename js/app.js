@@ -9,9 +9,11 @@ import * as S from './state.js';
 import { createStore } from './storage.js';
 import { playIntro } from './intro.js';
 import { banner, footer, esc } from './views/common.js';
+import * as overview from './views/overview.js';
+import * as noteEditor from './views/note-editor.js';
 
-const placeholder = { view: () => banner() + footer() };
-const VIEWS = { main: placeholder, notes: placeholder, settings: placeholder, finale: placeholder };
+const VIEWS = { main: overview, notes: overview, settings: overview, finale: overview };
+const MODULES = [overview, noteEditor];
 const ROUTES = { '#/': 'main', '#/notes': 'notes', '#/settings': 'settings', '#/finale': 'finale' };
 
 const appEl = document.getElementById('app');
@@ -19,7 +21,7 @@ const introEl = document.getElementById('intro');
 const warnEl = document.getElementById('storage-warning');
 
 const handlers = { actions: {}, inputs: {}, changes: {} };
-for (const mod of new Set(Object.values(VIEWS))) {
+for (const mod of MODULES) {
   Object.assign(handlers.actions, mod.actions);
   Object.assign(handlers.inputs, mod.inputs);
   Object.assign(handlers.changes, mod.changes);
