@@ -3,7 +3,7 @@
 // site's GoatCounter /count endpoint. Pure helpers here; app.js sends the hit.
 
 /** GoatCounter site code: the part before ".goatcounter.com". Empty = counting off. */
-export const GOATCOUNTER_CODE = '';
+export const GOATCOUNTER_CODE = 'glancsim';
 
 const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '[::1]', '::1', '0.0.0.0', '']);
 
