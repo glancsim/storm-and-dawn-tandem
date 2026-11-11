@@ -39,7 +39,7 @@ Značení: `E` = Empire of Storms, `T` = Tower of Dawn, `N` = novela Nightfall (
 ## Vzhled
 - Barvy: EOS fialová `#7F77DD` (text na vyplněné kapitole `#26215C`), TOD oranžová `#EF9F27` (text `#412402`).
 - Banner a finále: gradient 110° `#3a1b5c` → `#8a3b7a` (45 %) → `#e0702e`. Titulek ve fontu Georgia (serif), barva `#FBE98A`.
-- Úvod: světlý gradient shora dolů `#b27fd0` → `#e58aa0` → `#f6a85a` a černý kurzívní serifový text.
+- Úvod: světlý gradient shora dolů `#b27fd0` → `#e58aa0` → `#f6a85a` a černý serifový text (Georgia, bez kurzívy, stejně jako titulek banneru).
 - Siluetová scéna (SVG, stejná na úvodu, v banneru i ve finále; definuj ji jednou a znovupoužij):
   - vlevo velká výrazná vlna (tmavě modrozelená, světlý pěnový hřeben a pár kapek pěny),
   - uprostřed se voda zklidňuje, sniží se a přechází v pobřeží,
@@ -55,7 +55,7 @@ Značení: `E` = Empire of Storms, `T` = Tower of Dawn, `N` = novela Nightfall (
 ## Obrazovky a chování
 
 ### 1) Úvod (při každém otevření)
-- Celá obrazovka s gradientem, siluetovou scénou dole a textem `The storm is coming. / The tower is waiting. / Begin.` (černá kurzíva, serif, na střed).
+- Celá obrazovka s gradientem, siluetovou scénou dole a textem `The storm is coming. / The tower is waiting. / Begin.` (černý, serif Georgia bez kurzívy, na střed).
 - Žádné tlačítko, stačí kliknout nebo klepnout kamkoli (nebo stisknout libovolnou klávesu).
 - Animace: text se rozpadne na malé částice (černé a ohnivě oranžové `#ff7a1a` a `#ffc04d`). Částice se zleva doprava rozletí nahoru, zhasínají a za cca 2,5 s zmizí. Pak plynule přejde úvod do přehledu. Implementace: `canvas`, vzorkování pixelů vykresleného textu po 2 px; **počet částic omezit** (např. max. ~6000, na malých/slabých zařízeních zvětšit krok vzorkování), aby animace nelagovala. Respektuj devicePixelRatio.
 - Při `prefers-reduced-motion` jen jednoduché prolnutí.
@@ -67,7 +67,7 @@ Shora dolů:
 2. **Tři stejně velké dlaždice** s procenty: Total/Celkem, EOS, TOD (u EOS a TOD barevný čtvereček).
 3. **Řada tlačítek:** vlevo "Continue/Pokračovat" (hlavní) a "Notes/Poznámky (n)", zcela vpravo "Settings/Nastavení".
 4. **Datum začátku čtení** s ikonou kalendáře a tužtičkou pro úpravu (date input). Pokud není nastavené, doplní se dnešním datem při prvním označení kapitoly.
-5. **Progress pruh** (jeden segment na blok, šířka podle počtu kapitol, barva podle knihy). Plná barva = celý blok přečtený, 65 % = rozečtený, 28 % = nepřečtený. Nad pruhem odznak "You are here/Tady jsi" v místě první nepřečtené kapitoly (zarovnání omezit na 9 % až 91 %). Kliknutí na segment rozbalí příslušnou část.
+5. **Progress pruh** (jeden segment na blok, šířka podle počtu kapitol, barva podle knihy). Plná barva = celý blok přečtený, 65 % = rozečtený, 28 % = nepřečtený. Nad pruhem odznak "You are here/Tady jsi" se šipkou: šipka ukazuje přesně na první nepřečtenou kapitolu (bez omezení), odznak se u okrajů posune, aby se vešel do šířky pruhu. Kliknutí na segment rozbalí příslušnou část.
 6. **Čtyři "Části"** jako rozbalovací karty: šipka, název, mini progress bar, `přečteno / celkem`, odznak "You are here" u části s aktuální pozicí. Po otevření aplikace je rozbalená část s první nepřečtenou kapitolou (když je vše přečtené, první část).
 7. **Obsah části:** bloky v pořadí čtení. Každý blok je barevný pruh (fialový EOS, oranžový TOD) se zkratkou a tlačítky kapitol. Kapitola je malé tlačítko (číslo, po přečtení vyplněné a se zatržítkem). Pod každým tlačítkem je menší ikonka tužtičky pro poznámku (zvýrazněná, pokud poznámka existuje). Aktuální kapitola má výrazný obrys.
 8. **Velké tlačítko "Finished/Dočteno"** pod všemi částmi. Pokud je už uložené `finishDate`, tlačítko místo toho otevře finále (popisek stejný, bez dotazu).
