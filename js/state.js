@@ -116,14 +116,14 @@ export function remaining(flat, read) {
 }
 
 /**
- * Horizontal position (in %) of the "You are here" badge: where the first
- * unread chapter sits on the bar, clamped to 9..91. Null when all is read.
+ * Horizontal position (in %) of the "You are here" arrow: the middle of the
+ * first unread chapter on the bar, not clamped. Null when all is read.
+ * The badge text above the arrow is kept inside the bar by the CSS.
  */
 export function herePosition(flat, read) {
   const cur = firstUnread(flat, read);
   if (cur === null) return null;
-  const x = (flat.indexOf(cur) / flat.length) * 100;
-  return Math.min(Math.max(x, 9), 91);
+  return ((flat.indexOf(cur) + 0.5) / flat.length) * 100;
 }
 
 /* ---------- changes ---------- */

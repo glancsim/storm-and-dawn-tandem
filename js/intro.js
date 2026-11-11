@@ -55,7 +55,7 @@ export function playIntro(box) {
       ctx.fillStyle = '#000';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.font = `italic ${text.fs}px Georgia, "Times New Roman", serif`;
+      ctx.font = `${text.fs}px Georgia, "Times New Roman", serif`;
       QUOTE.forEach((line, i) => ctx.fillText(line, W / 2, text.y0 + i * text.lh));
     }
 

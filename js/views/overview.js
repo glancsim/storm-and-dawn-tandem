@@ -31,7 +31,9 @@ function startRow(ctx) {
 function progressBar(ctx, stats) {
   const { state, model, T } = ctx;
   const x = S.herePosition(model.flat, state.read);
-  const pin = x === null ? '' : `<div class="here-pin" style="left:${x.toFixed(2)}%"><span class="badge">${esc(T('here'))}</span></div>`;
+  // The arrow sits exactly at x; the badge slides by x % of its own width, so it is
+  // centred in the middle of the bar and flush with the bar's edge at either end.
+  const pin = x === null ? '' : `<div class="here-pin" style="--x:${x.toFixed(2)}%"><span class="badge">${esc(T('here'))}</span><span class="here-arrow"></span></div>`;
   const segs = model.parts
     .map((part) =>
       part.blocks

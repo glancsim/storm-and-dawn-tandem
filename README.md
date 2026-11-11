@@ -72,6 +72,8 @@ Choices made where `SPEC.md` is silent:
 - **Finished / Done with nothing left to read** stores today as the finish date without asking. "Yes, finished" also sets the start date to today if it was empty.
 - **Days reading** shows "–" if the start date is missing or later than the finish date.
 - **Chapter tile on the finale** shows the total number of chapters (145), as in the mockup.
+- **"You are here" on the progress bar:** the arrow points at the middle of the first unread chapter, with no 9-91 % limit (changed on request). The badge above it slides toward the bar's edge so it always fits, so near the start and the end the arrow is not under the badge's centre.
+- **Intro text** is upright Georgia like the banner title, not italic (changed on request).
 - **Clicking a progress bar segment** opens that part and scrolls to it (it does not toggle it closed). The segments are mouse and touch shortcuts only; the same action is available to keyboard and screen reader users through the part headers, so the 53 segments are not tab stops.
 - **Opening a note editor** closes a pending "also mark earlier?" prompt. Typed note text survives re-renders while the editor is open. Escape closes open prompts and editors.
 - **Notes with an empty page** leave the page out of the meta line ("Part 2 · 27 Oct 2026").

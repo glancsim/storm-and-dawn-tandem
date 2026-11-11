@@ -219,12 +219,11 @@ input[type="number"] { width: 90px; }
 /* ---------- progress bar ---------- */
 
 .bar-wrap { position: relative; padding-top: 26px; margin-bottom: 1rem; }
-.here-pin {
-  position: absolute; top: 0; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; pointer-events: none;
-}
-.here-pin::after {
-  content: ""; width: 0; height: 0;
+.here-pin { position: absolute; top: 0; left: 0; right: 0; height: 26px; pointer-events: none; }
+.here-pin .badge { position: absolute; top: 0; left: var(--x); transform: translateX(calc(var(--x) * -1)); }
+.here-arrow {
+  position: absolute; top: 19px; left: clamp(5px, var(--x), calc(100% - 5px)); transform: translateX(-50%);
+  width: 0; height: 0;
   border-left: 5px solid transparent; border-right: 5px solid transparent;
   border-top: 6px solid var(--accent-text);
 }

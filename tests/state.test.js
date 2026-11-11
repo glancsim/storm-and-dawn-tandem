@@ -90,11 +90,11 @@ test('firstUnread, unreadBefore, remaining', () => {
   assert.equal(S.remaining(flat, readFirst(140)), 5);
 });
 
-test('herePosition is clamped to 9..91', () => {
-  assert.equal(S.herePosition(flat, {}), 9);
-  assert.equal(S.herePosition(flat, readFirst(144)), 91);
-  const mid = S.herePosition(flat, readFirst(72));
-  assert.ok(Math.abs(mid - (72 / 145) * 100) < 1e-9);
+test('herePosition points at the middle of the first unread chapter', () => {
+  const near = (a, b) => Math.abs(a - b) < 1e-9;
+  assert.ok(near(S.herePosition(flat, {}), (0.5 / 145) * 100));
+  assert.ok(near(S.herePosition(flat, readFirst(144)), (144.5 / 145) * 100));
+  assert.ok(near(S.herePosition(flat, readFirst(72)), (72.5 / 145) * 100));
   assert.equal(S.herePosition(flat, readFirst(145)), null);
 });
 
